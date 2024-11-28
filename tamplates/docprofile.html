@@ -7,50 +7,178 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+      font-family: "Poppins", sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+    }
+    /* Profile dropdown visibility with animation */
+    .dropdown-menu {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out, visibility 0.2s;
+    }
+    .dropdown-menu.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    /* Mobile-specific improvements */
+    @media (max-width: 640px) {
+      .mobile-nav-link {
+        padding: 12px 0;
+        text-align: center;
+      }
+      .mobile-header {
+        padding: 10px;
+        text-align: center;
+      }
+    }
+    </style>
 </head>
 <body class="font-['Poppins'] bg-gray-50">
 
 <!-- Navigation -->
-<nav class="bg-white shadow-lg">
+<nav class="bg-white shadow-sm">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
-        <!-- Logo and Company Name -->
-        <div class="flex items-center">
-          <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-          <span class="ml-2 text-xl font-semibold text-black">MEDWAY</span>
-        </div>
-  
-        <!-- Navigation Links -->
-        <div class="hidden sm:block">
-          <div class="flex space-x-4">
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black hover:text-indigo-600">Home</a>
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black hover:text-indigo-600">Services</a>
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black hover:text-indigo-600">About</a>
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black hover:text-indigo-600">Contact</a>
+        <div
+          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+        >
+          <div class="flex shrink-0 items-center">
+            <img
+              class="h-8 w-auto"
+              src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+              alt="Your Company"
+            />
+            <span class="ml-2 text-xl font-semibold text-black">MEDWAY</span>
+          </div>
+          <!-- Hamburger Menu for Mobile -->
+          <div class="sm:hidden">
+            <button
+              id="mobile-menu-button"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-black hover:bg-gray-100"
+            >
+              <svg
+                class="block h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <a
+                href="https://mayursagar1415.github.io/MEDWAY.github.io/tamplates/index.html"
+                class="rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-white"
+                aria-current="page"
+                >Home</a
+              >
+              <a
+                href="https://mayursagar1415.github.io/MEDWAY.github.io/tamplates/dignosis.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-gray-600 hover:text-white"
+                >Services</a
+              >
+              <a
+                href="https://mayursagar1415.github.io/MEDWAY.github.io/tamplates/doctors.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-gray-600 hover:text-white"
+                >About</a
+              >
+              <a
+                href="https://mayursagar1415.github.io/MEDWAY.github.io/tamplates/internship.html"
+                class="rounded-md px-3 py-2 text-sm font-medium text-black hover:bg-gray-600 hover:text-white"
+                >Contact</a
+              >
+            </div>
           </div>
         </div>
-  
-        <!-- Profile Dropdown -->
-        <div class="relative custome_icon">
-          <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none" id="user-menu-button">
+        <div class="relative">
+          <!-- Profile Icon -->
+          <button
+            type="button"
+            class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none"
+            id="user-menu-button"
+          >
             <span class="sr-only">Open user menu</span>
-            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="User Profile">
+            <img
+              class="h-8 w-8 rounded-full"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              alt="User Profile"
+            />
           </button>
-  
+
           <!-- Dropdown Menu -->
-          <div class="absolute right-0 z-10 mt-2 hidden w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 dropdown-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">View notifications</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
+          <div
+            id="dropdown-menu"
+            class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none dropdown-menu"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="user-menu-button"
+          >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              role="menuitem"
+              >View notifications</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              role="menuitem"
+              >Your Profile</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              role="menuitem"
+              >Settings</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              role="menuitem"
+              >Sign out</a
+            >
           </div>
         </div>
-  
-        <!-- Mobile Hamburger Icon -->
-        <button class="md:hidden focus:outline-none">
-          <i class="bi bi-list text-2xl text-black"></i>
-        </button>
       </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden sm:hidden">
+      <a
+        href="#"
+        class="block px-3 py-2 text-base font-medium text-black hover:bg-gray-600 hover:text-white mobile-nav-link"
+        >Home</a
+      >
+      <a
+        href="#"
+        class="block px-3 py-2 text-base font-medium text-black hover:bg-gray-600 hover:text-white mobile-nav-link"
+        >Services</a
+      >
+      <a
+        href="#"
+        class="block px-3 py-2 text-base font-medium text-black hover:bg-gray-600 hover:text-white mobile-nav-link"
+        >About</a
+      >
+      <a
+        href="#"
+        class="block px-3 py-2 text-base font-medium text-black hover:bg-gray-600 hover:text-white mobile-nav-link"
+        >Contact</a
+      >
     </div>
   </nav>
 
@@ -106,45 +234,7 @@
     </div>
 </section>
 
-<section id="profile" class="min-h-screen p-4">
-    <div class="container mx-auto mt-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            <div class="flex flex-col md:flex-row gap-6">
-                <div class="md:w-1/3">
-                    <img src="https://images.unsplash.com/photo-1637059824899-a441006a6875?w=800" alt="Doctor Profile" class="w-full h-64 object-cover rounded-lg">
-                    <div class="mt-4 space-y-2">
-                        <h3 class="text-xl font-semibold">Dr. Priya Jain</h3>
-                        <p class="text-gray-600">MBBS, DMD (ENT)</p>
-                        <p class="text-gray-600">Registration No: MCI12345</p>
-                    </div>
-                </div>
-                <div class="md:w-2/3 space-y-4">
-                    <div>
-                        <h4 class="font-semibold text-lg">Specializations</h4>
-                        <p class="text-gray-600">Gynecology, Dermatology</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg">Experience</h4>
-                        <p class="text-gray-600">10 years of clinical practice</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg">Education</h4>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>MBBS - AIIMS Delhi</li>
-                            <li>DMD - Mumbai Medical College</li>
-                            <li>Fellowship in Advanced Gynecology</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg">Working Hours</h4>
-                        <p class="text-gray-600">Mon-Fri: 9:00 AM - 5:00 PM</p>
-                        <p class="text-gray-600">Sat: 9:00 AM - 1:00 PM</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 
 <section>
     <footer class="bg-gray-800 text-white py-12">
@@ -191,6 +281,34 @@
 </section>
 
 <script src="/static/js/docprofile.js"></script>
+<script>
+     // Toggle mobile menu
+     const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Toggle dropdown visibility on click
+    const userMenuButton = document.getElementById("user-menu-button");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    userMenuButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle("show");
+    });
+
+    // Close the dropdown if clicked outside
+    window.addEventListener("click", (e) => {
+      if (
+        !userMenuButton.contains(e.target) &&
+        !dropdownMenu.contains(e.target)
+      ) {
+        dropdownMenu.classList.remove("show");
+      }
+    });
+</script>
 
 </body>
 </html>
